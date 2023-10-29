@@ -12,8 +12,8 @@ using john_moreau_MidTerm.Models;
 namespace john_moreau_MidTerm.Migrations
 {
     [DbContext(typeof(SportsContext))]
-    [Migration("20231029040722_Initial")]
-    partial class Initial
+    [Migration("20231029061939_Products")]
+    partial class Products
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,7 +45,7 @@ namespace john_moreau_MidTerm.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(8,2)");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
@@ -59,28 +59,37 @@ namespace john_moreau_MidTerm.Migrations
                         {
                             ProductId = 1,
                             Code = "TRNY",
-                            DateAdded = "10/28/2023 at 9:07 PM",
+                            DateAdded = "10/28/2023 at 11:19 PM",
                             Name = "Tournament Master 1.0",
                             Price = 4.99m,
-                            ReleaseDate = new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Local)
+                            ReleaseDate = new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ProductId = 2,
                             Code = "LEAG10",
-                            DateAdded = "10/28/2023 at 9:07 PM",
+                            DateAdded = "10/28/2023 at 11:19 PM",
                             Name = "League Scheduler 1.0",
                             Price = 4.99m,
-                            ReleaseDate = new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Local)
+                            ReleaseDate = new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ProductId = 3,
                             Code = "LEAGD10",
-                            DateAdded = "10/28/2023 at 9:07 PM",
+                            DateAdded = "10/28/2023 at 11:19 PM",
                             Name = "League Scheduler Deluxe 1.0",
                             Price = 7.99m,
-                            ReleaseDate = new DateTime(2019, 8, 1, 0, 0, 1, 0, DateTimeKind.Local)
+                            ReleaseDate = new DateTime(2019, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            Code = "PS5",
+                            DateAdded = "10/28/2023 at 11:19 PM",
+                            Name = "Play Station 5",
+                            Price = 699.99m,
+                            ReleaseDate = new DateTime(2020, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 #pragma warning restore 612, 618

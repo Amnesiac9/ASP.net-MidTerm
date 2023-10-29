@@ -104,8 +104,7 @@ namespace john_moreau_MidTerm.Controllers
                 ViewBag.Action = (product.ProductId == 0) ? "Add" : "Edit";
                 if (product.ProductId == 0)
                 {
-
-                    return View("Edit", new Product());
+                    return View("Edit", product);
                 }
                 else
                 {
