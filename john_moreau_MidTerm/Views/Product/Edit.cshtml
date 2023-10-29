@@ -4,16 +4,12 @@
 * CSS233
 * 10/28/2023
 *@
-
-
 @model Product
 @{
-    string title = ViewBag.Action + " Contact";
+    string title = ViewBag.Action + " Product";
     ViewData["Title"] = title;
 }
-
 <h2>@title</h2>
-
 <form asp-action="Edit" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
 
