@@ -12,11 +12,11 @@
     Do you really want to delete <strong>@Model?.Name</strong>?
 </div>
 
-<form asp-action="Delete" method="post">
+<form asp-controller="Product" asp-action="Delete" method="post">
 
     <input type="hidden" asp-for="ProductId" />
 
     <button type="submit" class="btn btn-primary">Yes</button>
-    <a asp-action="List" asp-route-id="@Model?.ProductId"
+    <a asp-controller="Product" asp-action="List" asp-route-id="@Model?.ProductId"
        class="btn btn-primary">No</a>
 </form>
