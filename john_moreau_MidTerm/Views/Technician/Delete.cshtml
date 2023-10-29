@@ -3,9 +3,9 @@
 * CSS233
 * 10/28/2023
 *@
-@model Product
+@model Technician
 @{
-    ViewData["Title"] = "Delete Product";
+    ViewData["Title"] = "Delete Technician";
 }
 <h2>@ViewData["Title"]</h2>
 <div class="mb-3 mt-3">
@@ -14,9 +14,9 @@
 
 <form asp-action="Delete" method="post">
 
-    <input type="hidden" asp-for="ProductId" />
+    <input type="hidden" asp-for="Id" />
 
     <button type="submit" class="btn btn-primary">Yes</button>
-    <a asp-action="List" asp-route-id="@Model?.ProductId"
+    <a asp-action="List" asp-route-id="@Model?.Id"
        class="btn btn-primary">No</a>
 </form>
