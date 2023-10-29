@@ -56,28 +56,28 @@ namespace john_moreau_MidTerm.Migrations
                         {
                             ProductId = 1,
                             Code = "TRNY",
-                            DateAdded = "10/28/2023 at 7:15 PM",
+                            DateAdded = "10/28/2023 at 9:07 PM",
                             Name = "Tournament Master 1.0",
                             Price = 4.99m,
-                            ReleaseDate = new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ReleaseDate = new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             ProductId = 2,
                             Code = "LEAG10",
-                            DateAdded = "10/28/2023 at 7:15 PM",
+                            DateAdded = "10/28/2023 at 9:07 PM",
                             Name = "League Scheduler 1.0",
                             Price = 4.99m,
-                            ReleaseDate = new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ReleaseDate = new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             ProductId = 3,
                             Code = "LEAGD10",
-                            DateAdded = "10/28/2023 at 7:15 PM",
+                            DateAdded = "10/28/2023 at 9:07 PM",
                             Name = "League Scheduler Deluxe 1.0",
                             Price = 7.99m,
-                            ReleaseDate = new DateTime(2019, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ReleaseDate = new DateTime(2019, 8, 1, 0, 0, 1, 0, DateTimeKind.Local)
                         });
                 });
 #pragma warning restore 612, 618

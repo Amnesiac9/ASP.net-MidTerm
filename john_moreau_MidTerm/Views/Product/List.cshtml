@@ -126,8 +126,8 @@
                 <td>@product.Name</td>
                 <td>@product.Price</td>
                 <td>@product.ReleaseDate.ToString("d")</td>
-                <td><a class="btn btn-primary" asp-controller="Product" asp-action="Edit">Edit</a></td>
-                <td><a class="btn btn-primary" asp-controller="Product" asp-action="Delete">Delete</a></td>
+                <td><a class="btn btn-primary" asp-controller="Product" asp-action="Edit" asp-route-id="@product?.ProductId" asp-route-slug="@product?.Slug">Edit</a></td>
+                <td><a class="btn btn-primary" asp-controller="Product" asp-action="Delete" asp-route-id="@product?.ProductId" asp-route-slug="@product?.Slug">Delete</a></td>
             </tr>
         }
     </tbody>

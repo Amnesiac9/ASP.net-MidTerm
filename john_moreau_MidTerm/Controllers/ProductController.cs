@@ -16,10 +16,7 @@ namespace john_moreau_MidTerm.Controllers
 {
     public class ProductController : Controller
     {
-
-
         private SportsContext Context { get; set; }
-
         public ProductController(SportsContext ctx) => Context = ctx;
 
         public IActionResult List(string sortBy, string sortOrder)
@@ -64,6 +61,73 @@ namespace john_moreau_MidTerm.Controllers
                     return View(products.OrderBy(m => m.ProductId).ToList());
 
             }
+        }
+
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            ViewBag.Action = "Add";
+            return View("Edit", new Product());
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var contact = Context.Products.Find(id);
+            ViewBag.Action = "Edit";
+            return View(contact);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                if (product.ProductId == 0)
+                {
+                    product.DateAdded = DateTime.Now.ToString("MM/dd/yyyy 'at' h:mm tt");
+                    Context.Products.Add(product);
+
+                }
+                else
+                {
+                    Context.Products.Update(product);
+                }
+
+                Context.SaveChanges();
+                return RedirectToAction("List", "Product");
+
+            }
+            else
+            {
+                ViewBag.Action = (product.ProductId == 0) ? "Add" : "Edit";
+                if (product.ProductId == 0)
+                {
+
+                    return View("Edit", new Product());
+                }
+                else
+                {
+                    return View(product);
+                }
+
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var contact = Context.Products.Find(id);
+            return View(contact);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Product product)
+        {
+            Context.Products.Remove(product);
+            Context.SaveChanges();
+            return RedirectToAction("List", "Product");
         }
     }
 }

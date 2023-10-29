@@ -14,7 +14,7 @@ namespace john_moreau_MidTerm.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Contacts",
+                name: "Products",
                 columns: table => new
                 {
                     ProductId = table.Column<int>(type: "int", nullable: false)
@@ -27,17 +27,17 @@ namespace john_moreau_MidTerm.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contacts", x => x.ProductId);
+                    table.PrimaryKey("PK_Products", x => x.ProductId);
                 });
 
             migrationBuilder.InsertData(
-                table: "Contacts",
+                table: "Products",
                 columns: new[] { "ProductId", "Code", "DateAdded", "Name", "Price", "ReleaseDate" },
                 values: new object[,]
                 {
-                    { 1, "TRNY", "10/28/2023 at 6:50 PM", "Tournament Master 1.0", 4.99m, new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, "LEAG10", "10/28/2023 at 6:50 PM", "League Scheduler 1.0", 4.99m, new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, "LEAGD10", "10/28/2023 at 6:50 PM", "League Scheduler Deluxe 1.0", 4.99m, new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, "TRNY", "10/28/2023 at 9:07 PM", "Tournament Master 1.0", 4.99m, new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Local) },
+                    { 2, "LEAG10", "10/28/2023 at 9:07 PM", "League Scheduler 1.0", 4.99m, new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Local) },
+                    { 3, "LEAGD10", "10/28/2023 at 9:07 PM", "League Scheduler Deluxe 1.0", 7.99m, new DateTime(2019, 8, 1, 0, 0, 1, 0, DateTimeKind.Local) }
                 });
         }
 
@@ -45,7 +45,7 @@ namespace john_moreau_MidTerm.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Contacts");
+                name: "Products");
         }
     }
 }

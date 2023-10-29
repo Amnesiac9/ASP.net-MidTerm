@@ -25,7 +25,7 @@ namespace john_moreau_MidTerm.Models
                 Code = "TRNY",
                 Name = "Tournament Master 1.0",
                 Price = 4.99M,
-                ReleaseDate = new DateTime(2018, 12, 1),
+                ReleaseDate = new DateTime(2018, 12, 1, 0, 0, 0, DateTimeKind.Local),
                 DateAdded = DateTime.Now.ToString("MM/dd/yyyy 'at' h:mm tt")
             },
             new Product
@@ -34,7 +34,7 @@ namespace john_moreau_MidTerm.Models
                 Code = "LEAG10",
                 Name = "League Scheduler 1.0",
                 Price = 4.99M,
-                ReleaseDate = new DateTime(2019, 5, 1),
+                ReleaseDate = new DateTime(2019, 5, 1, 0, 0, 0, DateTimeKind.Local),
                 DateAdded = DateTime.Now.ToString("MM/dd/yyyy 'at' h:mm tt")
             },
             new Product
@@ -43,7 +43,7 @@ namespace john_moreau_MidTerm.Models
                 Code = "LEAGD10",
                 Name = "League Scheduler Deluxe 1.0",
                 Price = 7.99M,
-                ReleaseDate = new DateTime(2019, 8, 1),
+                ReleaseDate = new DateTime(2019, 8, 1, 0, 0, 1, DateTimeKind.Local),
                 DateAdded = DateTime.Now.ToString("MM/dd/yyyy 'at' h:mm tt")
             });
 

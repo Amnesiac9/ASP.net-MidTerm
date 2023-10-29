@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <BaseOutputPath>D:\John\OneDrive\School\CS223 ASP.net\Week5\john_moreau_MidTerm\john_moreau_MidTerm\temp2</BaseOutputPath>
+    <BaseOutputPath>D:\John\OneDrive\School\CS223 ASP.net\Week5\john_moreau_MidTerm\john_moreau_MidTerm\temp5</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +13,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
