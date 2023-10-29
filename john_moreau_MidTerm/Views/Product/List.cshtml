@@ -38,7 +38,7 @@
         <tr>
             <th>
                 Code
-                <a asp-action="List" asp-route-sortBy="@(GetSortBy("Code", GetNewSortOrder(ViewData["CodeSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["CodeSortOrder"]?.ToString() ?? ""))" class="sort-button">
+                <a asp-controller="Product" asp-action="List" asp-route-sortBy="@(GetSortBy("Code", GetNewSortOrder(ViewData["CodeSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["CodeSortOrder"]?.ToString() ?? ""))" class="sort-button">
                     @switch (ViewData["CodeSortOrder"]?.ToString() ?? "")
                     {
                         case "asc":
@@ -55,7 +55,7 @@
             </th>
             <th>
                 Name
-                <a asp-action="List" asp-route-sortBy="@(GetSortBy("Name", GetNewSortOrder(ViewData["NameSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["NameSortOrder"]?.ToString() ?? ""))" class="sort-button">
+                <a asp-controller="Product" asp-action="List" asp-route-sortBy="@(GetSortBy("Name", GetNewSortOrder(ViewData["NameSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["NameSortOrder"]?.ToString() ?? ""))" class="sort-button">
                     @switch (ViewData["NameSortOrder"]?.ToString() ?? "")
                     {
                         case "asc":
@@ -72,7 +72,7 @@
             </th>
             <th>
                 Price
-                <a asp-action="List" asp-route-sortBy="@(GetSortBy("Price", GetNewSortOrder(ViewData["PriceSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["PriceSortOrder"]?.ToString() ?? ""))" class="sort-button" id="sort-phone">
+                <a asp-controller="Product" asp-action="List" asp-route-sortBy="@(GetSortBy("Price", GetNewSortOrder(ViewData["PriceSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["PriceSortOrder"]?.ToString() ?? ""))" class="sort-button">
                     @switch (ViewData["PriceSortOrder"]?.ToString() ?? "")
                     {
                         case "asc":
@@ -89,7 +89,7 @@
             </th>
             <th>
                 Release Date
-                <a asp-action="List" asp-route-sortBy="@(GetSortBy("ReleaseDate", GetNewSortOrder(ViewData["ReleaseDateSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["ReleaseDateSortOrder"]?.ToString() ?? ""))" class="sort-button" id="sort-email">
+                <a asp-controller="Product" asp-action="List" asp-route-sortBy="@(GetSortBy("ReleaseDate", GetNewSortOrder(ViewData["ReleaseDateSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["ReleaseDateSortOrder"]?.ToString() ?? ""))" class="sort-button">
                     @switch (ViewData["ReleaseDateSortOrder"]?.ToString() ?? "")
                     {
                         case "asc":

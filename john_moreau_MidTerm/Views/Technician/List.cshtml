@@ -38,7 +38,7 @@
         <tr>
             <th>
                 Name
-                <a asp-action="List" asp-route-sortBy="@(GetSortBy("Name", GetNewSortOrder(ViewData["NameSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["NameSortOrder"]?.ToString() ?? ""))" class="sort-button">
+                <a asp-controller="Technician" asp-action="List" asp-route-sortBy="@(GetSortBy("Name", GetNewSortOrder(ViewData["NameSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["NameSortOrder"]?.ToString() ?? ""))" class="sort-button">
                     @switch (ViewData["NameSortOrder"]?.ToString() ?? "")
                     {
                         case "asc":
@@ -55,7 +55,7 @@
             </th>
             <th>
                 Email
-                <a asp-action="List" asp-route-sortBy="@(GetSortBy("Email", GetNewSortOrder(ViewData["EmailSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["EmailSortOrder"]?.ToString() ?? ""))" class="sort-button">
+                <a asp-controller="Technician" asp-action="List" asp-route-sortBy="@(GetSortBy("Email", GetNewSortOrder(ViewData["EmailSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["EmailSortOrder"]?.ToString() ?? ""))" class="sort-button">
                     @switch (ViewData["EmailSortOrder"]?.ToString() ?? "")
                     {
                         case "asc":
@@ -72,8 +72,8 @@
             </th>
             <th>
                 Phone
-                <a asp-action="List" asp-route-sortBy="@(GetSortBy("Price", GetNewSortOrder(ViewData["PriceSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["PriceSortOrder"]?.ToString() ?? ""))" class="sort-button" id="sort-phone">
-                    @switch (ViewData["PriceSortOrder"]?.ToString() ?? "")
+                <a asp-controller="Technician" asp-action="List" asp-route-sortBy="@(GetSortBy("Phone", GetNewSortOrder(ViewData["PhoneSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["PhoneSortOrder"]?.ToString() ?? ""))" class="sort-button">
+                    @switch (ViewData["PhoneSortOrder"]?.ToString() ?? "")
                     {
                         case "asc":
                             <span class="sort-icon fas fa-arrow-up" style="margin-left: 5px;"></span>
@@ -94,26 +94,19 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in Model)
+        @foreach (var technician in Model)
         {
+            if (technician.Id == -1) continue; //Skip listing "Not Assigned"
             <tr>
-                @*<td>
-                    <a asp-controller="Contact" asp-action="Details" asp-route-id="@product.ContactId"
-                       asp-route-slug="@product.Slug" style="text-decoration: none;">@product.FirstName</a>
-                </td>
-                <td>
-                    <a asp-controller="Contact" asp-action="Details" asp-route-id="@product.ContactId"
-                       asp-route-slug="@product.Slug" style="text-decoration: none;">@product.LastName</a>
-                </td>*@
-                <td>@product.Name</td>
-                <td>@product.Email</td>
-                <td>@product.Phone</td>
-                <td><a class="btn btn-primary" asp-controller="Product" asp-action="Edit" asp-route-id="@product?.Id" asp-route-slug="@product?.Slug">Edit</a></td>
-                <td><a class="btn btn-primary" asp-controller="Product" asp-action="Delete" asp-route-id="@product?.Id" asp-route-slug="@product?.Slug">Delete</a></td>
+                <td>@technician.Name</td>
+                <td>@technician.Email</td>
+                <td>@technician.Phone</td>
+                <td><a class="btn btn-primary" asp-controller="Technician" asp-action="Edit" asp-route-id="@technician?.Id" asp-route-slug="@technician?.Slug">Edit</a></td>
+                <td><a class="btn btn-primary" asp-controller="Technician" asp-action="Delete" asp-route-id="@technician?.Id" asp-route-slug="@technician?.Slug">Delete</a></td>
             </tr>
         }
     </tbody>
 </table>
 <div class="mb-4">
-    <a class="btn btn-primary" asp-controller="Product" asp-action="Add">Add Product</a>
+    <a class="btn btn-primary" asp-controller="Technician" asp-action="Add">Add Technician</a>
 </div>
