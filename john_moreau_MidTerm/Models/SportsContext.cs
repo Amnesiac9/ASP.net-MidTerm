@@ -19,6 +19,8 @@ namespace john_moreau_MidTerm.Models
 
         public DbSet<Customer> Customers { get; set; } = null!;
 
+        public DbSet<Incident> Incidents { get; set; } = null!;
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -188,6 +190,7 @@ namespace john_moreau_MidTerm.Models
                     LastName = "Anthoni",
                     Address = "123 Street",
                     City = "San Francisco",
+                    State = "California",
                     PostalCode = "94102",
                     CountryId = 1, 
                     Email = "kanthoni@pge.com",
@@ -200,6 +203,7 @@ namespace john_moreau_MidTerm.Models
                     LastName = "Moreau",
                     Address = "123 Street",
                     City = "Walla Walla",
+                    State = "Washington",
                     PostalCode = "99362",
                     CountryId = 1,
                     Email = "john@email.com",
@@ -212,6 +216,7 @@ namespace john_moreau_MidTerm.Models
                     LastName = "Greene",
                     Address = "124 Street",
                     City = "Walla Walla",
+                    State = "Washington",
                     PostalCode = "99362",
                     CountryId = 1,
                     Email = "robin@wwcc.com",
@@ -219,17 +224,61 @@ namespace john_moreau_MidTerm.Models
                 },
                 new Customer
                 {
-                    Id = 3,
+                    Id = 4,
                     FirstName = "Jackson",
                     LastName = "Greg",
                     Address = "20 Vista Street",
                     City = "Queenstown",
+                    State = "Otago",
                     PostalCode = "21658",
                     CountryId = 12,
                     Email = "jacksong@newzealand.com",
                     Phone = "64 222-222-2222"
                 }
                 );
+
+            modelBuilder.Entity<Incident>().HasData(
+                new Incident
+                {
+                    Id = 1,
+                    CustomerId = 1,
+                    ProductId = 1,
+                    Title = "Error launching program",
+                    Description = "Program fails with error code 510, unable to open database.",
+                    TechnicianId = 1,
+                    DateOpened = new DateTime(2022, 10, 9).ToString("MM/dd/yyyy h:mm:ss tt")
+                }, 
+                new Incident
+                {
+                    Id = 2,
+                    CustomerId = 2,
+                    ProductId = 1,
+                    Title = "Error importing data",
+                    Description = "Program fails with error code 510, unable to open database.",
+                    TechnicianId = 3,
+                    DateOpened = new DateTime(2022, 9, 10).ToString("MM/dd/yyyy h:mm:ss tt")
+                },
+                new Incident
+                {
+                    Id = 3,
+                    CustomerId = 3,
+                    ProductId = 2,
+                    Title = "Could not install",
+                    Description = "Program fails with error code 322, unable to access device.",
+                    TechnicianId = 4,
+                    DateOpened = new DateTime(2022, 8, 3).ToString("MM/dd/yyyy h:mm:ss tt")
+                },
+                new Incident
+                {
+                    Id = 4,
+                    CustomerId = 4,
+                    ProductId = 4,
+                    Title = "Could not install",
+                    Description = "Program fails with error 304, unable to access requested files.",
+                    TechnicianId = 2,
+                    DateOpened = new DateTime(2022, 1, 8).ToString("MM/dd/yyyy h:mm:ss tt")
+                }
+                ) ;
         }
 
     }

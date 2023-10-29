@@ -88,23 +88,6 @@
                 </a>
             </th>
             <th>
-                Release Date
-                <a asp-controller="Customer" asp-action="List" asp-route-sortBy="@(GetSortBy("ReleaseDate", GetNewSortOrder(ViewData["ReleaseDateSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["ReleaseDateSortOrder"]?.ToString() ?? ""))" class="sort-button">
-                    @switch (ViewData["ReleaseDateSortOrder"]?.ToString() ?? "")
-                    {
-                        case "asc":
-                            <span class="sort-icon fas fa-arrow-up" style="margin-left: 5px;"></span>
-                            break;
-                        case "desc":
-                            <span class="sort-icon fas fa-arrow-down" style="margin-left: 5px;"></span>
-                            break;
-                        default:
-                            <span class="sort-icon fas fa-sort" style="margin-left: 5px;"></span>
-                            break;
-                    }
-                </a>
-            </th>
-            <th>
             </th>
             <th>
             </th>
@@ -114,7 +97,7 @@
         @foreach (var customer in Model)
         {
             <tr>
-                <td>@customer.FirstName + @customer.LastName</td>
+                <td>@customer.FirstName @customer.LastName</td>
                 <td>@customer.Email</td>
                 <td>@customer.City</td>
                 <td><a class="btn btn-primary" asp-controller="Customer" asp-action="Edit" asp-route-id="@customer?.Id" asp-route-slug="@customer?.Slug">Edit</a></td>

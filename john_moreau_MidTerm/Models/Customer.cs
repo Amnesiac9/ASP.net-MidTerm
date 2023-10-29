@@ -31,6 +31,9 @@ namespace john_moreau_MidTerm.Models
         [Required(ErrorMessage = "Please enter a City")]
         public string City { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "Please enter a State")]
+        public string State { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "Please enter a Postal Code")]
         public string PostalCode { get; set; } = string.Empty;
 
@@ -38,13 +41,11 @@ namespace john_moreau_MidTerm.Models
         public int CountryId { get; set; } // Foreign key property
         public Country? Country { get; set; } // Navigation property
 
-        //[Required(ErrorMessage = "Please enter an Email")]
-        [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
-        public string Email { get; set; } = string.Empty;
+        public string Name => FirstName + " " + LastName;
 
-        //[OptionalField]
-        //[RegularExpression(@"^\d{3}-\d{3}-\d{4}$", ErrorMessage = "Please enter a valid 10-digit phone number in format 555-555-5555.")]
-        public string Phone { get; set; } = string.Empty;
+        public string? Email { get; set; } = string.Empty;
+
+        public string? Phone { get; set; } = string.Empty;
 
         public string? DateAdded { get; set; } = string.Empty;
 

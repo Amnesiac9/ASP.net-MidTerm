@@ -1,4 +1,4 @@
-﻿using john_moreau_MidTerm.Migrations;
+﻿//using john_moreau_MidTerm.Migrations;
 using john_moreau_MidTerm.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
