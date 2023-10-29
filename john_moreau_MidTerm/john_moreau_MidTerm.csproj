@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <BaseOutputPath>D:\John\OneDrive\School\CS223 ASP.net\Week5\john_moreau_MidTerm\john_moreau_MidTerm\temp2</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

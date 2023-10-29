@@ -1,0 +1,47 @@
+﻿
+@*
+* John Moreau
+* CSS233
+* 10/28/2023
+*@
+
+
+@model Product
+@{
+    string title = ViewBag.Action + " Contact";
+    ViewData["Title"] = title;
+}
+
+<h2>@title</h2>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Code" class="form-label">Code</label>
+        <input asp-for="Code" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label">Yearly Price</label>
+        <input asp-for="Price" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ReleaseDate" class="form-label" type="date">Release Date</label>
+        <input asp-for="ReleaseDate" class="form-control">
+    </div>
+
+    <input type="hidden" asp-for="ProductId" />
+
+    <input type="hidden" asp-for="DateAdded" />
+
+    <button type="submit" class="btn btn-dark text-white">Save</button>
+    <a asp-action="Details" asp-route-id="@Model.ProductId"
+       class="btn btn-dark text-white">Cancel</a>
+</form>

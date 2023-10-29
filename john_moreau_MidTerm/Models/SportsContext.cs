@@ -1,5 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+//@*
+//*John Moreau
+//* CSS233
+//* 10/28/2023
+//*@
 namespace john_moreau_MidTerm.Models
 {
     public class SportsContext : DbContext
@@ -7,7 +11,7 @@ namespace john_moreau_MidTerm.Models
         public SportsContext(DbContextOptions<SportsContext> options)
             : base(options)
         { }
-        public DbSet<Product> Contacts { get; set; } = null!;
+        public DbSet<Product> Products { get; set; } = null!;
         //public DbSet<Category> Categories { get; set; } = null!;
 
 
@@ -30,7 +34,7 @@ namespace john_moreau_MidTerm.Models
                 Code = "LEAG10",
                 Name = "League Scheduler 1.0",
                 Price = 4.99M,
-                ReleaseDate = new DateTime(2018, 12, 1),
+                ReleaseDate = new DateTime(2019, 5, 1),
                 DateAdded = DateTime.Now.ToString("MM/dd/yyyy 'at' h:mm tt")
             },
             new Product
@@ -38,8 +42,8 @@ namespace john_moreau_MidTerm.Models
                 ProductId = 3,
                 Code = "LEAGD10",
                 Name = "League Scheduler Deluxe 1.0",
-                Price = 4.99M,
-                ReleaseDate = new DateTime(2018, 12, 1),
+                Price = 7.99M,
+                ReleaseDate = new DateTime(2019, 8, 1),
                 DateAdded = DateTime.Now.ToString("MM/dd/yyyy 'at' h:mm tt")
             });
 
