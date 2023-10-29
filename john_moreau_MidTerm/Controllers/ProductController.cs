@@ -29,7 +29,7 @@ namespace john_moreau_MidTerm.Controllers
                     ViewData["CodeSortOrder"] = sortOrder;
                     return sortOrder switch
                     {
-                        "asc" => View(products.ToList()),
+                        "asc" => View(products.OrderBy(m => m.Code).ToList()),
                         "desc" => View(products.OrderByDescending(m => m.Code).ToList()),
                         _ => View(products.OrderBy(m => m.ProductId).ToList()),
                     };

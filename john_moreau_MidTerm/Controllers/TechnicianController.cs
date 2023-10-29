@@ -30,7 +30,7 @@ namespace john_moreau_MidTerm.Controllers
                     ViewData["NameSortOrder"] = sortOrder;
                     return sortOrder switch
                     {
-                        "asc" => View(technicians.ToList()),
+                        "asc" => View(technicians.OrderBy(m => m.Name).ToList()),
                         "desc" => View(technicians.OrderByDescending(m => m.Name).ToList()),
                         _ => View(technicians.OrderBy(m => m.Id).ToList()),
                     };
