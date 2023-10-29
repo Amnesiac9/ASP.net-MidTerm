@@ -1,0 +1,145 @@
+﻿@*
+* John Moreau
+* CSS233
+* 10/28/2023
+*@
+@model List<Product>
+@{
+    // For getting a new sort order to pass to my backend controller so that the URL query matches the actual sort order >:|
+    string GetNewSortOrder(string sortOrder)
+    {
+        switch (sortOrder)
+        {
+            case "asc":
+                return "desc";
+            case "desc":
+                return "";
+            default:
+                return "asc";
+        }
+
+    }
+
+    // For getting the sort by value to pass to my backend controller so that the URL query will go away when I'm not sorting by anything
+    string GetSortBy(string sortBy, string sortOrder)
+    {
+        if (sortOrder == "") return "";
+
+        return sortBy;
+
+    }
+}
+<div class="mb-2">
+    <a asp-controller="Contact" asp-action="Add" style="text-decoration: none;">Add Contact</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+                <a asp-action="Index" asp-route-sortBy="@(GetSortBy("FirstName", GetNewSortOrder(ViewData["FirstNameSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["FirstNameSortOrder"]?.ToString() ?? ""))" class="sort-button" id="sort-first-name">
+                    @switch (ViewData["FirstNameSortOrder"]?.ToString() ?? "")
+                    {
+                        case "asc":
+                            <span class="sort-icon fas fa-arrow-up" style="margin-left: 5px;"></span>
+                            break;
+                        case "desc":
+                            <span class="sort-icon fas fa-arrow-down" style="margin-left: 5px;"></span>
+                            break;
+                        default:
+                            <span class="sort-icon fas fa-sort" style="margin-left: 5px;"></span>
+                            break;
+                    }
+                </a>
+            </th>
+            <th>
+                Last Name
+                <a asp-action="Index" asp-route-sortBy="@(GetSortBy("LastName", GetNewSortOrder(ViewData["LastNameSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["LastNameSortOrder"]?.ToString() ?? ""))" class="sort-button" id="sort-last-name">
+                    @switch (ViewData["LastNameSortOrder"]?.ToString() ?? "")
+                    {
+                        case "asc":
+                            <span class="sort-icon fas fa-arrow-up" style="margin-left: 5px;"></span>
+                            break;
+                        case "desc":
+                            <span class="sort-icon fas fa-arrow-down" style="margin-left: 5px;"></span>
+                            break;
+                        default:
+                            <span class="sort-icon fas fa-sort" style="margin-left: 5px;"></span>
+                            break;
+                    }
+                </a>
+            </th>
+            <th>
+                Phone
+                <a asp-action="Index" asp-route-sortBy="@(GetSortBy("Phone", GetNewSortOrder(ViewData["PhoneSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["PhoneSortOrder"]?.ToString() ?? ""))" class="sort-button" id="sort-phone">
+                    @switch (ViewData["PhoneSortOrder"]?.ToString() ?? "")
+                    {
+                        case "asc":
+                            <span class="sort-icon fas fa-arrow-up" style="margin-left: 5px;"></span>
+                            break;
+                        case "desc":
+                            <span class="sort-icon fas fa-arrow-down" style="margin-left: 5px;"></span>
+                            break;
+                        default:
+                            <span class="sort-icon fas fa-sort" style="margin-left: 5px;"></span>
+                            break;
+                    }
+                </a>
+            </th>
+            <th>
+                Email
+                <a asp-action="Index" asp-route-sortBy="@(GetSortBy("Email", GetNewSortOrder(ViewData["EmailSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["EmailSortOrder"]?.ToString() ?? ""))" class="sort-button" id="sort-email">
+                    @switch (ViewData["EmailSortOrder"]?.ToString() ?? "")
+                    {
+                        case "asc":
+                            <span class="sort-icon fas fa-arrow-up" style="margin-left: 5px;"></span>
+                            break;
+                        case "desc":
+                            <span class="sort-icon fas fa-arrow-down" style="margin-left: 5px;"></span>
+                            break;
+                        default:
+                            <span class="sort-icon fas fa-sort" style="margin-left: 5px;"></span>
+                            break;
+                    }
+                </a>
+            </th>
+            <th>
+                Category
+                <a asp-action="Index" asp-route-sortBy="@(GetSortBy("Category", GetNewSortOrder(ViewData["CategorySortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["CategorySortOrder"]?.ToString() ?? ""))" class="sort-button" id="sort-category">
+                    @switch (ViewData["CategorySortOrder"]?.ToString() ?? "")
+                    {
+                        case "asc":
+                            <span class="sort-icon fas fa-arrow-up" style="margin-left: 5px;"></span>
+                            break;
+                        case "desc":
+                            <span class="sort-icon fas fa-arrow-down" style="margin-left: 5px;"></span>
+                            break;
+                        default:
+                            <span class="sort-icon fas fa-sort" style="margin-left: 5px;"></span>
+                            break;
+                    }
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                @*<td>
+                    <a asp-controller="Contact" asp-action="Details" asp-route-id="@product.ContactId"
+                       asp-route-slug="@product.Slug" style="text-decoration: none;">@product.FirstName</a>
+                </td>
+                <td>
+                    <a asp-controller="Contact" asp-action="Details" asp-route-id="@product.ContactId"
+                       asp-route-slug="@product.Slug" style="text-decoration: none;">@product.LastName</a>
+                </td>*@
+                <td>@product.Code</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.ReleaseDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

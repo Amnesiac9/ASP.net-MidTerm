@@ -2,6 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
+/*
+* John Moreau
+* CSS233
+* 10/28/2023
+*
+*
+*/
+
 namespace john_moreau_MidTerm.Controllers
 {
     public class HomeController : Controller
@@ -14,6 +22,11 @@ namespace john_moreau_MidTerm.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Products()
         {
             return View();
         }
