@@ -18,7 +18,7 @@ namespace john_moreau_MidTerm.Models
     public class Product
     {
         // EF Core will configure the database to generate this value
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Please enter a Product Code")]
         public string Code { get; set; } = string.Empty;

@@ -31,7 +31,7 @@ namespace john_moreau_MidTerm.Controllers
                     {
                         "asc" => View(products.OrderBy(m => m.Code).ToList()),
                         "desc" => View(products.OrderByDescending(m => m.Code).ToList()),
-                        _ => View(products.OrderBy(m => m.ProductId).ToList()),
+                        _ => View(products.OrderBy(m => m.Id).ToList()),
                     };
                 case "Name":
                     ViewData["NameSortOrder"] = sortOrder;
@@ -39,7 +39,7 @@ namespace john_moreau_MidTerm.Controllers
                     {
                         "asc" => View(products.OrderBy(m => m.Name).ToList()),
                         "desc" => View(products.OrderByDescending(m => m.Name).ToList()),
-                        _ => View(products.OrderBy(m => m.ProductId).ToList()),
+                        _ => View(products.OrderBy(m => m.Id).ToList()),
                     };
                 case "Price":
                     ViewData["PriceSortOrder"] = sortOrder;
@@ -47,7 +47,7 @@ namespace john_moreau_MidTerm.Controllers
                     {
                         "asc" => View(products.OrderBy(m => m.Price).ToList()),
                         "desc" => View(products.OrderByDescending(m => m.Price).ToList()),
-                        _ => View(products.OrderBy(m => m.ProductId).ToList()),
+                        _ => View(products.OrderBy(m => m.Id).ToList()),
                     };
                 case "ReleaseDate":
                     ViewData["ReleaseDateSortOrder"] = sortOrder;
@@ -55,10 +55,10 @@ namespace john_moreau_MidTerm.Controllers
                     {
                         "asc" => View(products.OrderBy(m => m.ReleaseDate).ToList()),
                         "desc" => View(products.OrderByDescending(m => m.ReleaseDate).ToList()),
-                        _ => View(products.OrderBy(m => m.ProductId).ToList()),
+                        _ => View(products.OrderBy(m => m.Id).ToList()),
                     };
                 default:
-                    return View(products.OrderBy(m => m.ProductId).ToList());
+                    return View(products.OrderBy(m => m.Id).ToList());
 
             }
         }
@@ -84,7 +84,7 @@ namespace john_moreau_MidTerm.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (product.ProductId == 0)
+                if (product.Id == 0)
                 {
                     product.DateAdded = DateTime.Now.ToString("MM/dd/yyyy 'at' h:mm tt");
                     Context.Products.Add(product);
@@ -101,8 +101,8 @@ namespace john_moreau_MidTerm.Controllers
             }
             else
             {
-                ViewBag.Action = (product.ProductId == 0) ? "Add" : "Edit";
-                if (product.ProductId == 0)
+                ViewBag.Action = (product.Id == 0) ? "Add" : "Edit";
+                if (product.Id == 0)
                 {
                     return View("Edit", product);
                 }

@@ -15,6 +15,10 @@ namespace john_moreau_MidTerm.Models
         public DbSet<Product> Products { get; set; } = null!;
         public DbSet<Technician> Technicians { get; set; } = null!;
 
+        public DbSet<Country> Countries { get; set; } = null!;
+
+        public DbSet<Customer> Customers { get; set; } = null!;
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,7 +26,7 @@ namespace john_moreau_MidTerm.Models
             modelBuilder.Entity<Product>().HasData(
             new Product
             {
-                ProductId = 1,
+                Id = 1,
                 Code = "TRNY",
                 Name = "Tournament Master 1.0",
                 Price = 4.99M,
@@ -31,7 +35,7 @@ namespace john_moreau_MidTerm.Models
             },
             new Product
             {
-                ProductId = 2,
+                Id = 2,
                 Code = "LEAG10",
                 Name = "League Scheduler 1.0",
                 Price = 4.99M,
@@ -40,7 +44,7 @@ namespace john_moreau_MidTerm.Models
             },
             new Product
             {
-                ProductId = 3,
+                Id = 3,
                 Code = "LEAGD10",
                 Name = "League Scheduler Deluxe 1.0",
                 Price = 7.99M,
@@ -49,7 +53,7 @@ namespace john_moreau_MidTerm.Models
             },
             new Product
             {
-                ProductId = 4,
+                Id = 4,
                 Code = "PS5",
                 Name = "Play Station 5",
                 Price = 699.99M,
@@ -100,10 +104,132 @@ namespace john_moreau_MidTerm.Models
                     Email = "gina@email.com",
                     Phone = "509-555-0459"
                 }
-
-
             );
 
+            modelBuilder.Entity<Country>().HasData(
+                new Country
+                {
+                    Id = 1,
+                    Name = "United States",
+                    Code = "US"
+                },
+                new Country
+                {
+                    Id = 2,
+                    Name = "Canada",
+                    Code = "CA"
+                }, 
+                new Country
+                {
+                    Id = 3,
+                    Name = "Mexico",
+                    Code = "MX"
+                },
+                new Country
+                {
+                    Id = 4,
+                    Name = "Australia",
+                    Code = "AU"
+                },
+                new Country
+                {
+                    Id = 5,
+                    Name = "France",
+                    Code = "FR"
+                },
+                new Country
+                {
+                    Id = 6,
+                    Name = "Finland",
+                    Code = "FI"
+                },
+                new Country
+                {
+                    Id = 7,
+                    Name = "Germany",
+                    Code = "DE"
+                },
+                new Country
+                {
+                    Id = 8,
+                    Name = "Denmark",
+                    Code = "DK"
+                },
+                new Country
+                {
+                    Id = 9,
+                    Name = "Japan",
+                    Code = "JP"
+                },
+                new Country
+                {
+                    Id = 10,
+                    Name = "India",
+                    Code = "IN"
+                },
+                new Country
+                {
+                    Id = 11,
+                    Name = "Italy",
+                    Code = "IT"
+                },
+                new Country
+                {
+                    Id = 12,
+                    Name = "New Zealand",
+                    Code = "NZ"
+                });
+
+            modelBuilder.Entity<Customer>().HasData(
+                new Customer
+                {
+                    Id = 1,
+                    FirstName = "Kaitlyn",
+                    LastName = "Anthoni",
+                    Address = "123 Street",
+                    City = "San Francisco",
+                    PostalCode = "94102",
+                    CountryId = 1, 
+                    Email = "kanthoni@pge.com",
+                    Phone = "555-555-5555"
+                }, 
+                new Customer
+                {
+                    Id = 2,
+                    FirstName = "John",
+                    LastName = "Moreau",
+                    Address = "123 Street",
+                    City = "Walla Walla",
+                    PostalCode = "99362",
+                    CountryId = 1,
+                    Email = "john@email.com",
+                    Phone = "555-555-5554"
+                },
+                new Customer
+                {
+                    Id = 3,
+                    FirstName = "Robin",
+                    LastName = "Greene",
+                    Address = "124 Street",
+                    City = "Walla Walla",
+                    PostalCode = "99362",
+                    CountryId = 1,
+                    Email = "robin@wwcc.com",
+                    Phone = "555-555-5553"
+                },
+                new Customer
+                {
+                    Id = 3,
+                    FirstName = "Jackson",
+                    LastName = "Greg",
+                    Address = "20 Vista Street",
+                    City = "Queenstown",
+                    PostalCode = "21658",
+                    CountryId = 12,
+                    Email = "jacksong@newzealand.com",
+                    Phone = "64 222-222-2222"
+                }
+                );
         }
 
     }
