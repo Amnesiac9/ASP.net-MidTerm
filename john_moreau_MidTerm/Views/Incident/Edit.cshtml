@@ -19,7 +19,7 @@
         </div>
         <div class="col-10">
             <select asp-for="CustomerId" asp-items="@(new SelectList(ViewBag.Customers, "Id", "Name"))" class="form-select">
-                <option value="">Add a customer...</option>
+                <option value=0>Add a customer...</option>
             </select>
         </div>
     </div>
@@ -30,7 +30,7 @@
         </div>
         <div class="col-10">
             <select asp-for="ProductId" asp-items="@(new SelectList(ViewBag.Products, "Id", "Name"))" class="form-select">
-                <option value="">Add a Product...</option>
+                <option value=0>Add a Product...</option>
             </select>
         </div>
     </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="col-10">
             <select asp-for="TechnicianId" asp-items="@(new SelectList(ViewBag.Technicians, "Id", "Name"))" class="form-select">
-                <option value="">Choose a technician...</option>
+                <option value=0>Choose a technician...</option>
             </select>
         </div>
     </div>

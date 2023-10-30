@@ -19,12 +19,14 @@ namespace john_moreau_MidTerm.Models
         // EF Core will configure the database to generate this value
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please enter a Customer")]
+        [Required(ErrorMessage = "Please select a Customer")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a Customer")]
         public int CustomerId { get; set; } // Foreign key property
         public Customer? Customer { get; set; } // Navigation property
 
 
-        [Required(ErrorMessage = "Please enter a Product")]
+        [Required(ErrorMessage = "Please select a Product")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a Product")]
         public int ProductId { get; set; } // Foreign key property
         public Product? Product { get; set; } // Navigation property
 
@@ -36,7 +38,8 @@ namespace john_moreau_MidTerm.Models
         public string Description { get; set; } = string.Empty;
 
 
-        [Required(ErrorMessage = "Please enter a Technician")]
+        [Required(ErrorMessage = "Please select a Technician")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a Technician")]
         public int TechnicianId { get; set; } // Foreign key property
         public Technician? Technician { get; set; } // Navigation property
 
