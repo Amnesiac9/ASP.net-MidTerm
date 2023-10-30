@@ -139,5 +139,132 @@ namespace john_moreau_MidTerm.Controllers
             Context.SaveChanges();
             return RedirectToAction("List", "Incident");
         }
+
+        public IActionResult Update(string sortBy, string sortOrder, int Id)
+        {
+            if (Id == 0)
+            {
+                ViewBag.Technicians = Context.Technicians.ToList();
+                return View((new List<Incident>(), new Technician()));
+            }
+            var technician = Context.Technicians.Find(Id); //?? technician;
+            var incidents = Context.Incidents.Include(c => c.Customer).Include(c => c.Product).Where(i => i.TechnicianId == Id); //.OrderBy(m => m.Id).ToList();
+            ViewBag.Technicians = Context.Technicians.ToList();
+
+            switch (sortBy)
+            {
+                case "Title":
+                    ViewData["TitleSortOrder"] = sortOrder;
+                    return sortOrder switch
+                    {
+                        "asc" => View((incidents.OrderBy(m => m.Title).ToList(), technician)),
+                        "desc" => View((incidents.OrderByDescending(m => m.Title).ToList(), technician)),
+                        _ => View((incidents.OrderBy(m => m.Id).ToList(), technician)),
+                    };
+                case "Customer":
+                    ViewData["CustomerSortOrder"] = sortOrder;
+                    return sortOrder switch
+                    {
+                        "asc" => View((incidents.OrderBy(m => m.Customer == null ? "" : m.Customer.FirstName).ToList(), technician)),
+                        "desc" => View((incidents.OrderByDescending(m => m.Customer == null ? "" : m.Customer.FirstName).ToList(), technician)),
+                        _ => View((incidents.OrderBy(m => m.Id).ToList(), technician)),
+                    };
+                case "Product":
+                    ViewData["ProductSortOrder"] = sortOrder;
+                    return sortOrder switch
+                    {
+                        "asc" => View((incidents.OrderBy(m => m.Product == null ? "" : m.Product.Name).ToList(), technician)),
+                        "desc" => View((incidents.OrderByDescending(m => m.Product == null ? "" : m.Product.Name).ToList(), technician)),
+                        _ => View((incidents.OrderBy(m => m.Id).ToList(), technician)),
+                    };
+                case "DateOpened":
+                    ViewData["DateOpenedSortOrder"] = sortOrder;
+                    return sortOrder switch
+                    {
+                        "asc" => View((incidents.OrderBy(m => m.DateOpened).ToList(), technician)),
+                        "desc" => View((incidents.OrderByDescending(m => m.DateOpened).ToList(), technician)),
+                        _ => View((incidents.OrderBy(m => m.Id).ToList(), technician)),
+                    };
+                default:                    
+                    return View((incidents.OrderBy(m => m.Id).ToList(), technician));
+
+            }
+
+
+
+        }
+
+        [HttpPost]
+        public IActionResult Update(List<Incident> incidents, int Id)
+        {
+            var technician = Context.Technicians.Find(Id); //?? technician;
+            incidents = Context.Incidents.Include(c => c.Customer).Include(c => c.Product).Where(i => i.TechnicianId == Id).OrderBy(m => m.Id).ToList();
+            ViewBag.Technicians = Context.Technicians.ToList();
+            return View((incidents, technician));
+        }
+
+        [HttpGet]
+        public IActionResult EditTech(int id)
+        {
+            var incident = Context.Incidents.Find(id);
+            ViewBag.Customers = Context.Customers.ToList();
+            ViewBag.Products = Context.Products.ToList();
+            ViewBag.Technicians = Context.Technicians.ToList();
+            ViewBag.Action = "Edit";
+            return View(incident);
+        }
+
+        [HttpPost]
+        public IActionResult EditTech(Incident incident, int TechId)
+        {
+            Console.WriteLine("EditTech Post ID: " + TechId);
+
+            if (ModelState.IsValid)
+            {
+                if (incident.Id == 0)
+                {
+                    incident.DateOpened = DateTime.Now.ToString("MM/dd/yyyy h:mm:ss tt");
+                    Context.Incidents.Add(incident);
+
+                }
+                else
+                {
+                    Context.Incidents.Update(incident);
+                }
+
+                Context.SaveChanges();
+                return RedirectToAction("Update", "Incident", new { sortBy = "", sortOrder = "", Id = TechId });
+                //return View("Update", Id);
+
+            }
+            else
+            {
+                ViewBag.Customers = Context.Customers.ToList();
+                ViewBag.Products = Context.Products.ToList();
+                ViewBag.Technicians = Context.Technicians.ToList();
+                ViewBag.Action = (incident.Id == 0) ? "Add" : "Edit";
+                if (incident.Id == 0)
+                {
+                    return View("EditTech", incident);
+                }
+                else
+                {
+                    return View(incident);
+                }
+
+            }
+        }
+
+        //[HttpGet]
+        //public IActionResult AddTech()
+        //{
+        //    ViewBag.Customers = Context.Customers.ToList();
+        //    ViewBag.Products = Context.Products.ToList();
+        //    ViewBag.Technicians = Context.Technicians.ToList();
+        //    ViewBag.Action = "Add";
+        //    return View("EditTech", new Incident());
+        //}
+
+
     }
 }

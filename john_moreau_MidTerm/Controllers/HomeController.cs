@@ -30,12 +30,12 @@ namespace john_moreau_MidTerm.Controllers
             return View();
         }
 
-        //public IActionResult Products()
-        //{
-        //    return View();
-        //}
+        public IActionResult About()
+        {
+            return View();
+        }
 
-        public IActionResult Privacy()
+        public IActionResult Registrations()
         {
             return View();
         }

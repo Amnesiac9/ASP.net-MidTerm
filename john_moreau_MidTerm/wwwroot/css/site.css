@@ -22,3 +22,14 @@ body {
     justify-content: flex-end;
     flex-grow: 1;
 }
+
+/* When no longer hovering, transform back */
+.interactive-list-item {
+    transition: transform 0.3s;
+}
+
+/* Hovering grow transition */
+.interactive-list-item:hover {
+    transform: scale(1.02); 
+    transition: transform 0.3s;
+}
