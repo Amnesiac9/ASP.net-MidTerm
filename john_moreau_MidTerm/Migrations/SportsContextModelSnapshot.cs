@@ -241,7 +241,6 @@ namespace john_moreau_MidTerm.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DateOpened")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -345,7 +344,7 @@ namespace john_moreau_MidTerm.Migrations
                         {
                             Id = 1,
                             Code = "TRNY",
-                            DateAdded = "10/29/2023 at 2:46 PM",
+                            DateAdded = "10/29/2023 at 7:06 PM",
                             Name = "Tournament Master 1.0",
                             Price = 4.99m,
                             ReleaseDate = new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -354,7 +353,7 @@ namespace john_moreau_MidTerm.Migrations
                         {
                             Id = 2,
                             Code = "LEAG10",
-                            DateAdded = "10/29/2023 at 2:46 PM",
+                            DateAdded = "10/29/2023 at 7:06 PM",
                             Name = "League Scheduler 1.0",
                             Price = 4.99m,
                             ReleaseDate = new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -363,7 +362,7 @@ namespace john_moreau_MidTerm.Migrations
                         {
                             Id = 3,
                             Code = "LEAGD10",
-                            DateAdded = "10/29/2023 at 2:46 PM",
+                            DateAdded = "10/29/2023 at 7:06 PM",
                             Name = "League Scheduler Deluxe 1.0",
                             Price = 7.99m,
                             ReleaseDate = new DateTime(2019, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -372,7 +371,7 @@ namespace john_moreau_MidTerm.Migrations
                         {
                             Id = 4,
                             Code = "PS5",
-                            DateAdded = "10/29/2023 at 2:46 PM",
+                            DateAdded = "10/29/2023 at 7:06 PM",
                             Name = "Play Station 5",
                             Price = 699.99m,
                             ReleaseDate = new DateTime(2020, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)

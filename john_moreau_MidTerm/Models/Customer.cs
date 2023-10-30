@@ -38,7 +38,9 @@ namespace john_moreau_MidTerm.Models
         public string PostalCode { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Please choose a Country")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please choose a Country")]
         public int CountryId { get; set; } // Foreign key property
+
         public Country? Country { get; set; } // Navigation property
 
         public string Name => FirstName + " " + LastName;

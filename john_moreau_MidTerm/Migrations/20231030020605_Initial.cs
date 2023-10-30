@@ -99,7 +99,7 @@ namespace john_moreau_MidTerm.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TechnicianId = table.Column<int>(type: "int", nullable: false),
-                    DateOpened = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateOpened = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateClosed = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -149,10 +149,10 @@ namespace john_moreau_MidTerm.Migrations
                 columns: new[] { "Id", "Code", "DateAdded", "Name", "Price", "ReleaseDate" },
                 values: new object[,]
                 {
-                    { 1, "TRNY", "10/29/2023 at 2:46 PM", "Tournament Master 1.0", 4.99m, new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, "LEAG10", "10/29/2023 at 2:46 PM", "League Scheduler 1.0", 4.99m, new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, "LEAGD10", "10/29/2023 at 2:46 PM", "League Scheduler Deluxe 1.0", 7.99m, new DateTime(2019, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, "PS5", "10/29/2023 at 2:46 PM", "Play Station 5", 699.99m, new DateTime(2020, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, "TRNY", "10/29/2023 at 7:06 PM", "Tournament Master 1.0", 4.99m, new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, "LEAG10", "10/29/2023 at 7:06 PM", "League Scheduler 1.0", 4.99m, new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, "LEAGD10", "10/29/2023 at 7:06 PM", "League Scheduler Deluxe 1.0", 7.99m, new DateTime(2019, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, "PS5", "10/29/2023 at 7:06 PM", "Play Station 5", 699.99m, new DateTime(2020, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(

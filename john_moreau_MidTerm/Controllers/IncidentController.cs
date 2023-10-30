@@ -22,7 +22,7 @@ namespace john_moreau_MidTerm.Controllers
 
         public IActionResult List(string sortBy, string sortOrder)
         {
-            var incidents = Context.Incidents;
+            var incidents = Context.Incidents.Include(c => c.Customer).Include(c => c.Product);
             //var countries = Context.Countries.ToList();
 
             switch (sortBy)
@@ -31,36 +31,36 @@ namespace john_moreau_MidTerm.Controllers
                     ViewData["TitleSortOrder"] = sortOrder;
                     return sortOrder switch
                     {
-                        "asc" => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderBy(m => m.Title).ToList()),
-                        "desc" => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderByDescending(m => m.Title).ToList()),
-                        _ => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderBy(m => m.Id).ToList()),
+                        "asc" => View(incidents.OrderBy(m => m.Title).ToList()),
+                        "desc" => View(incidents.OrderByDescending(m => m.Title).ToList()),
+                        _ => View(incidents.OrderBy(m => m.Id).ToList()),
                     };
                 case "Customer":
                     ViewData["CustomerSortOrder"] = sortOrder;
                     return sortOrder switch
                     {
-                        "asc" => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderBy(m => m.Customer.FirstName).ToList()),
-                        "desc" => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderByDescending(m => m.Customer.FirstName).ToList()),
-                        _ => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderBy(m => m.Id).ToList()),
+                        "asc" => View(incidents.OrderBy(m => m.Customer == null ? "" : m.Customer.FirstName).ToList()),
+                        "desc" => View(incidents.OrderByDescending(m => m.Customer == null ? "" : m.Customer.FirstName).ToList()),
+                        _ => View(incidents.OrderBy(m => m.Id).ToList()),
                     };
                 case "Product":
                     ViewData["ProductSortOrder"] = sortOrder;
                     return sortOrder switch
                     {
-                        "asc" => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderBy(m => m.Product.Name).ToList()),
-                        "desc" => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderByDescending(m => m.Product.Name).ToList()),
-                        _ => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderBy(m => m.Id).ToList()),
+                        "asc" => View(incidents.OrderBy(m => m.Product == null ? "" : m.Product.Name).ToList()),
+                        "desc" => View(incidents.OrderByDescending(m => m.Product == null ? "" : m.Product.Name).ToList()),
+                        _ => View(incidents.OrderBy(m => m.Id).ToList()),
                     };
                 case "DateOpened":
                     ViewData["DateOpenedSortOrder"] = sortOrder;
                     return sortOrder switch
                     {
-                        "asc" => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderBy(m => m.DateOpened).ToList()),
-                        "desc" => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderByDescending(m => m.DateOpened).ToList()),
-                        _ => View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderBy(m => m.Id).ToList()),
+                        "asc" => View(incidents.OrderBy(m => m.DateOpened).ToList()),
+                        "desc" => View(incidents.OrderByDescending(m => m.DateOpened).ToList()),
+                        _ => View(incidents.OrderBy(m => m.Id).ToList()),
                     };
                 default:
-                    return View(incidents.Include(c => c.Customer).Include(c => c.Product).OrderBy(m => m.Id).ToList());
+                    return View(incidents.OrderBy(m => m.Id).ToList());
 
             }
         }

@@ -80,6 +80,8 @@ namespace john_moreau_MidTerm.Controllers
         {
             if (ModelState.IsValid)
             {
+                customer.Email = customer.Email?.ToLower();
+
                 if (customer.Id == 0)
                 {
                     customer.DateAdded = DateTime.Now.ToString("MM/dd/yyyy 'at' h:mm tt");

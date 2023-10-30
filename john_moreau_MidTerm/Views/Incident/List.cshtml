@@ -72,8 +72,8 @@
             </th>
             <th>
                 Product
-                <a asp-controller="Incident" asp-action="List" asp-route-sortBy="@(GetSortBy("Customer", GetNewSortOrder(ViewData["CustomerSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["CustomerSortOrder"]?.ToString() ?? ""))" class="sort-button">
-                    @switch (ViewData["CustomerSortOrder"]?.ToString() ?? "")
+                <a asp-controller="Incident" asp-action="List" asp-route-sortBy="@(GetSortBy("Product", GetNewSortOrder(ViewData["ProductSortOrder"]?.ToString() ?? "")))" asp-route-sortOrder="@(GetNewSortOrder(ViewData["ProductSortOrder"]?.ToString() ?? ""))" class="sort-button">
+                    @switch (ViewData["ProductSortOrder"]?.ToString() ?? "")
                     {
                         case "asc":
                             <span class="sort-icon fas fa-arrow-up" style="margin-left: 5px;"></span>
@@ -117,7 +117,7 @@
                 <td>@incident.Title</td>
                 <td>@incident.Customer?.Name</td>
                 <td>@incident.Product?.Name</td>
-                <td>@incident.DateOpened.Split(" ")[0]</td>
+                <td>@incident.DateOpened?.Split(" ")[0]</td>
                 <td><a class="btn btn-primary" asp-controller="Incident" asp-action="Edit" asp-route-id="@incident?.Id" asp-route-slug="@incident?.Slug">Edit</a></td>
                 <td><a class="btn btn-primary" asp-controller="Incident" asp-action="Delete" asp-route-id="@incident?.Id" asp-route-slug="@incident?.Slug">Delete</a></td>
             </tr>

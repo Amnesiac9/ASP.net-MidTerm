@@ -77,6 +77,7 @@ namespace john_moreau_MidTerm.Controllers
         {
             if (ModelState.IsValid)
             {
+                technician.Email = technician.Email != null ? technician.Email.ToLower() : "";
                 if (technician.Id == 0)
                 {
                     technician.DateAdded = DateTime.Now.ToString("MM/dd/yyyy 'at' h:mm tt");

@@ -18,8 +18,8 @@
             <label asp-for="CustomerId" class="form-label">Customer</label>
         </div>
         <div class="col-10">
-            <select asp-for="CustomerId" asp-items="@(new SelectList(ViewBag.Customers, "Id", "Name"))" class="form-control">
-                <option value="@(Model.Id == 1 ? "" : Model.Customer?.Name)">ViewBag.Customers[0]</option>
+            <select asp-for="CustomerId" asp-items="@(new SelectList(ViewBag.Customers, "Id", "Name"))" class="form-select">
+                <option value="">Add a customer...</option>
             </select>
         </div>
     </div>
@@ -29,7 +29,9 @@
             <label asp-for="ProductId" class="form-label">Product</label>
         </div>
         <div class="col-10">
-            <select asp-for="ProductId" asp-items="@(new SelectList(ViewBag.Products, "Id", "Name"))" class="form-control"></select>
+            <select asp-for="ProductId" asp-items="@(new SelectList(ViewBag.Products, "Id", "Name"))" class="form-select">
+                <option value="">Add a Product...</option>
+            </select>
         </div>
     </div>
 
@@ -56,7 +58,9 @@
             <label asp-for="TechnicianId" class="form-label">Technician</label>
         </div>
         <div class="col-10">
-            <select asp-for="TechnicianId" asp-items="@(new SelectList(ViewBag.Technicians, "Id", "Name"))" class="form-control"></select>
+            <select asp-for="TechnicianId" asp-items="@(new SelectList(ViewBag.Technicians, "Id", "Name"))" class="form-select">
+                <option value="">Choose a technician...</option>
+            </select>
         </div>
     </div>
 
@@ -69,14 +73,32 @@
         </div>
     </div>
 
-    <div class="row mb-3">
-        <div class="col-2 mt-1">
-            <label asp-for="DateClosed" class="form-label">Date Closed</label>
+    @*Show the date picker for Date Closed only when editing. *@
+    @if (ViewBag.Action == "Edit")
+    {
+        <div class="row mb-3">
+            <div class="col-2 mt-1">
+                <label asp-for="DateClosed" class="form-label">Date Closed</label>
+            </div>
+            <div class="col-10">
+                <input asp-for="DateClosed" class="form-control" step="any" type="datetime-local">
+            </div>
         </div>
-        <div class="col-10">
-            <input asp-for="DateClosed" class="form-control" type="datetime-local">
+    } 
+    else
+    {
+        <div class="row mb-3">
+            <div class="col-2 mt-1">
+                <label asp-for="DateClosed" class="form-label">Date Closed</label>
+            </div>
+            <div class="col-10">
+                <input asp-for="DateClosed" class="form-control" type="text" disabled>
+            </div>
         </div>
-    </div>
+    }
+
+
+
 
     <input type="hidden" asp-for="DateOpened" /> @*To allow date opened to send in the POST request when updating.*@
 
