@@ -10,7 +10,7 @@
     ViewData["Title"] = title;
 }
 <h2>@title</h2>
-<form asp-controller="Incident" asp-action="EditTech" method="post" asp-route-techid="@Model.TechnicianId">
+<form asp-controller="Incident" asp-action="EditTech" method="post" asp-route-techid="@Model.TechnicianId"> @*Use asp-route-techid here instead of id to not override hidden Id field for the Incident.Id*@
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row mb-3">
         <div class="col-2 mt-1">

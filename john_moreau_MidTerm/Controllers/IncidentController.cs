@@ -23,7 +23,6 @@ namespace john_moreau_MidTerm.Controllers
         public IActionResult List(string sortBy, string sortOrder)
         {
             var incidents = Context.Incidents.Include(c => c.Customer).Include(c => c.Product);
-            //var countries = Context.Countries.ToList();
 
             switch (sortBy)
             {
@@ -147,7 +146,7 @@ namespace john_moreau_MidTerm.Controllers
                 ViewBag.Technicians = Context.Technicians.ToList();
                 return View((new List<Incident>(), new Technician()));
             }
-            var technician = Context.Technicians.Find(Id); //?? technician;
+            var technician = Context.Technicians.Find(Id);
             var incidents = Context.Incidents.Include(c => c.Customer).Include(c => c.Product).Where(i => i.TechnicianId == Id); //.OrderBy(m => m.Id).ToList();
             ViewBag.Technicians = Context.Technicians.ToList();
 
@@ -197,7 +196,7 @@ namespace john_moreau_MidTerm.Controllers
         [HttpPost]
         public IActionResult Update(List<Incident> incidents, int Id)
         {
-            var technician = Context.Technicians.Find(Id); //?? technician;
+            var technician = Context.Technicians.Find(Id);
             incidents = Context.Incidents.Include(c => c.Customer).Include(c => c.Product).Where(i => i.TechnicianId == Id).OrderBy(m => m.Id).ToList();
             ViewBag.Technicians = Context.Technicians.ToList();
             return View((incidents, technician));
@@ -234,8 +233,6 @@ namespace john_moreau_MidTerm.Controllers
 
                 Context.SaveChanges();
                 return RedirectToAction("Update", "Incident", new { sortBy = "", sortOrder = "", Id = TechId });
-                //return View("Update", Id);
-
             }
             else
             {
@@ -254,16 +251,6 @@ namespace john_moreau_MidTerm.Controllers
 
             }
         }
-
-        //[HttpGet]
-        //public IActionResult AddTech()
-        //{
-        //    ViewBag.Customers = Context.Customers.ToList();
-        //    ViewBag.Products = Context.Products.ToList();
-        //    ViewBag.Technicians = Context.Technicians.ToList();
-        //    ViewBag.Action = "Add";
-        //    return View("EditTech", new Incident());
-        //}
 
 
     }
